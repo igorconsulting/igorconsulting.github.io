@@ -1,1 +1,0 @@
-# igorconsulting.github.io
