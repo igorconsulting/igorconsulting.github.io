@@ -4,354 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Igor Caetano Diniz - ML Engineer & Data Scientist</title>
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #00ff9d;
-            --secondary: #00d4ff;
-            --dark: #0a0e1a;
-            --darker: #050810;
-            --text: #e0e6ed;
-            --text-dim: #8892a6;
-            --accent: #ff006e;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'JetBrains Mono', monospace;
-            background: var(--darker);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .grain {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.03;
-            z-index: 1000;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(5, 8, 16, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
-            padding: 1rem 0;
-            z-index: 100;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .nav-toggle span {
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            transition: all 0.3s ease;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(0, 255, 157, 0.1) 0%, transparent 70%);
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -20%;
-            width: 80%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.08) 0%, transparent 70%);
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-label {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: fadeInUp 1s ease-out 0.2s backwards;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
-            font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out 0.4s backwards;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: var(--text-dim);
-            margin-bottom: 2rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.6s backwards;
-        }
-
-        .hero-description {
-            max-width: 700px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 3rem;
-            color: var(--text-dim);
-            animation: fadeInUp 1s ease-out 0.8s backwards;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            animation: fadeInUp 1s ease-out 1s backwards;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border: 2px solid;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--darker);
-            border-color: var(--primary);
-        }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: var(--secondary);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--darker);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
-        }
-
-        /* Sections - rest of CSS remains the same */
-        .section {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            margin-bottom: 4rem;
-            font-weight: 300;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: rgba(5, 8, 16, 0.98);
-                flex-direction: column;
-                padding: 2rem;
-                border-bottom: 1px solid rgba(0, 255, 157, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-        }
-
-        /* I'll continue with remaining styles... */
-    </style>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/components.css">
 </head>
 <body>
+    <!-- Grain texture overlay -->
     <div class="grain"></div>
 
     <!-- Navigation -->
@@ -359,7 +23,11 @@
         <div class="nav-container">
             <a href="index.html" class="nav-logo">ICD</a>
             <ul class="nav-links" id="navLinks">
-                <li><a href="index.html">Home</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -371,29 +39,74 @@
         </div>
     </nav>
 
-    <!-- Hero and rest of content -->
-    <section class="hero">
+    <!-- Hero Section -->
+    <div id="heroSection"></div>
+
+    <!-- About Section -->
+    <div id="aboutSection"></div>
+
+    <!-- Experience Section -->
+    <div id="experienceSection"></div>
+
+    <!-- Projects Section -->
+    <div id="projectsSection"></div>
+
+    <!-- Skills Section -->
+    <div id="skillsSection"></div>
+
+    <!-- Education Section -->
+    <div id="educationSection"></div>
+
+    <!-- Contact Section -->
+    <div id="contactSection"></div>
+
+    <!-- Footer -->
+    <footer>
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-label">Machine Learning Engineer</div>
-                <h1 class="hero-title">IGOR CAETANO<br>DINIZ</h1>
-                <p class="hero-subtitle">Data Scientist | AI Researcher | Ph.D. Candidate</p>
-                <p class="hero-description">
-                    Specialized in building scalable, data-driven AI solutions with over 4 years of experience.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-primary"><span>Get In Touch</span></a>
-                    <a href="blog.html" class="btn btn-secondary">Read Blog</a>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://github.com/igorconsulting" target="_blank" class="footer-link">GitHub</a>
+                    <a href="https://www.linkedin.com/in/igor-caetano-diniz/" target="_blank" class="footer-link">LinkedIn</a>
+                    <a href="mailto:icaetanodiniz@gmail.com" class="footer-link">Email</a>
+                    <a href="blog.html" class="footer-link">Blog</a>
                 </div>
+                <p>© 2025 Igor Caetano Diniz. Machine Learning Engineer & Data Scientist.</p>
+                <p style="margin-top: 1rem; font-size: 0.9rem;">Montes Claros, Minas Gerais - Brazil</p>
             </div>
         </div>
-    </section>
+    </footer>
 
+    <!-- Data Configuration -->
+    <script src="data/site-data.js"></script>
+    
+    <!-- Component Scripts -->
+    <script src="js/components/hero.js"></script>
+    <script src="js/components/about.js"></script>
+    <script src="js/components/experience.js"></script>
+    <script src="js/components/projects.js"></script>
+    <script src="js/components/skills.js"></script>
+    <script src="js/components/education.js"></script>
+    <script src="js/components/contact.js"></script>
+    
+    <!-- Utilities -->
+    <script src="js/utils.js"></script>
+    
+    <!-- Initialize Page -->
     <script>
-        const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
-        navToggle.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render all sections
+            renderHero();
+            renderAbout();
+            renderExperience();
+            renderProjects();
+            renderSkills();
+            renderEducation();
+            renderContact();
+            
+            // Initialize utilities
+            initScrollAnimations();
+            initSmoothScroll();
+            initMobileMenu();
         });
     </script>
 </body>
