@@ -65,12 +65,6 @@
             border-bottom: 1px solid rgba(0, 255, 157, 0.1);
             padding: 1rem 0;
             z-index: 100;
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
         }
 
         .nav-container {
@@ -107,7 +101,6 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .nav-links a:hover {
@@ -120,7 +113,6 @@
             display: flex;
             align-items: center;
             position: relative;
-            overflow: hidden;
             padding-top: 80px;
         }
 
@@ -158,7 +150,7 @@
         }
 
         .hero-description {
-            max-width: 700px;
+            max-width: 800px;
             font-size: 1.1rem;
             line-height: 1.8;
             margin-bottom: 3rem;
@@ -228,7 +220,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
 
         .highlight-card {
@@ -262,6 +254,211 @@
             line-height: 1.7;
         }
 
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: var(--dark);
+            border: 1px solid rgba(0, 255, 157, 0.1);
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            transition: height 0.4s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.1);
+        }
+
+        .experience-card:hover::before {
+            height: 100%;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-size: 1.2rem;
+            color: var(--text);
+            font-weight: 400;
+        }
+
+        .experience-date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            white-space: nowrap;
+        }
+
+        .experience-description {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
+        .experience-description ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .experience-description li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+            position: relative;
+        }
+
+        .experience-description li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--dark);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            color: var(--text);
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--secondary);
+            color: var(--darker);
+            transform: translateY(-2px);
+        }
+
+        /* Education Timeline */
+        .education-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .education-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: var(--dark);
+            border: 1px solid rgba(0, 255, 157, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border: 3px solid var(--darker);
+            border-radius: 50%;
+        }
+
+        .education-item:hover {
+            transform: translateX(10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.1);
+        }
+
+        .education-degree {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-date {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            color: var(--text-dim);
+            line-height: 1.8;
+        }
+
         /* Footer */
         footer {
             background: var(--darker);
@@ -277,13 +474,20 @@
             justify-content: center;
             gap: 2rem;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
         }
 
         .footer-link {
             color: var(--primary);
             text-decoration: none;
+            transition: all 0.3s ease;
         }
 
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -293,6 +497,13 @@
             }
             .section {
                 padding: 4rem 0;
+            }
+            .education-timeline {
+                padding-left: 2rem;
+            }
+            .btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -308,6 +519,9 @@
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="blog.html">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -318,13 +532,16 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-label">Machine Learning Engineer</div>
+                <div class="hero-label">Machine Learning Engineer / Data Scientist</div>
                 <h1 class="hero-title">IGOR CAETANO<br>DINIZ</h1>
-                <p class="hero-subtitle">Data Scientist | AI Researcher | Ph.D. Candidate</p>
+                <p class="hero-subtitle">Ph.D. Candidate | ML Engineer | Data Scientist</p>
                 <p class="hero-description">
-                    Data Scientist and Machine Learning Engineer with over 4 years of experience 
-                    developing scalable, data-driven solutions. Currently pursuing a Ph.D. in Data Science at 
-                    PUC-Rio, focusing on scalable generative AI architectures and anomaly detection.
+                    Data Scientist and Machine Learning Engineer with over 4 years of experience developing scalable, 
+                    data-driven solutions. My academic journey began with approval in both IME and ITA entrance exams, 
+                    followed by admission to PUC-Rio through the Desafio PUC-Rio Olympiad, in which I was awarded a 
+                    gold medal and received a full scholarship. I hold a Bachelor's and a Master's degree in Mathematics 
+                    and am currently pursuing a Ph.D. in Data Science, with a focus on scalable generative AI architectures 
+                    and anomaly detection.
                 </p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-primary">Get In Touch</a>
@@ -345,7 +562,8 @@
                     <div class="highlight-icon">🎓</div>
                     <h3 class="highlight-title">Academic Excellence</h3>
                     <p class="highlight-description">
-                        Approved in IME and ITA entrance exams. Gold medal winner at Desafio PUC-Rio Olympiad with full scholarship.
+                        Approved in both IME and ITA entrance exams. Gold medal winner at Desafio PUC-Rio Olympiad 
+                        with full scholarship. Currently pursuing Ph.D. in Data Science at PUC-Rio.
                     </p>
                 </div>
 
@@ -353,24 +571,341 @@
                     <div class="highlight-icon">🏢</div>
                     <h3 class="highlight-title">Industry Experience</h3>
                     <p class="highlight-description">
-                        Worked on high-impact AI initiatives with Petrobras, Intel, Embraer, and Eletrobras.
+                        Worked on high-impact AI initiatives with Petrobras, Intel, Embraer, and Eletrobras, 
+                        delivering solutions involving generative AI, RAG, computer vision, LLMs, NLP, and anomaly detection.
                     </p>
                 </div>
 
                 <div class="highlight-card">
                     <div class="highlight-icon">🚀</div>
-                    <h3 class="highlight-title">Technical Expertise</h3>
+                    <h3 class="highlight-title">Full ML Lifecycle</h3>
                     <p class="highlight-description">
-                        Full ML lifecycle: Generative AI, RAG, Computer Vision, LLMs, NLP, and Anomaly Detection.
+                        Experience spans the complete machine learning lifecycle—from modeling and deployment to 
+                        CI/CD pipelines, MLOps practices, and cloud-native infrastructure.
                     </p>
                 </div>
 
                 <div class="highlight-card">
                     <div class="highlight-icon">⚙️</div>
-                    <h3 class="highlight-title">MLOps & Cloud</h3>
+                    <h3 class="highlight-title">Technical Stack</h3>
                     <p class="highlight-description">
-                        Expert in CI/CD pipelines, MLOps practices, and cloud-native infrastructure on GCP, AWS, and Azure.
+                        Expert in Python, SQL, PySpark, Databricks, GCP, AWS, Docker, Kubernetes, Airflow, 
+                        CI/CD (GitHub Actions), and both Functional and Object-Oriented Programming.
                     </p>
+                </div>
+            </div>
+
+            <div style="background: var(--dark); border: 1px solid rgba(0, 255, 157, 0.1); padding: 2rem; margin-top: 2rem;">
+                <p style="color: var(--text-dim); line-height: 1.8; font-size: 1.05rem;">
+                    Experience focused on <strong style="color: var(--primary);">predictive modeling</strong>, 
+                    <strong style="color: var(--primary);">anomaly detection</strong>, 
+                    <strong style="color: var(--primary);">deep learning</strong>, building 
+                    <strong style="color: var(--primary);">machine learning pipelines</strong>, deploy and monitoring 
+                    Machine Learning models, committed to making efficient and maintainable projects.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience" style="background: var(--dark);">
+        <div class="container">
+            <h2 class="section-title">EXPERIENCE</h2>
+            <p class="section-subtitle">Building production-grade AI solutions</p>
+            
+            <div class="experience-grid">
+                <!-- HVAR -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Machine Learning Staff Researcher and Engineer</h3>
+                            <p class="experience-company">HVAR</p>
+                        </div>
+                        <div class="experience-date">Sep 2025 - Present</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Conducted in-depth research and development on Large Language Models (LLM), Retrieval-Augmented Generation (RAG), and GraphRAG solutions with LLAMA and GEMINI LLM based models applied to text-2-sql problems</li>
+                            <li>Developed robust data-driven solutions to assist developers and consulting services</li>
+                            <li>Collaborated with cross-functional teams to enhance the effectiveness of data science applications</li>
+                            <li>Designing, architecting, and implementing advanced data science and machine learning solutions within Databricks, focused on predictive modeling, anomaly detection, and automation of large-scale ML pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Intel -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Machine Learning Engineer and Data Scientist</h3>
+                            <p class="experience-company">Intel (via Arbit)</p>
+                        </div>
+                        <div class="experience-date">Jul 2024 - Sep 2025</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Designing, architecting, and implementing advanced data science and machine learning solutions within Databricks, focused on predictive modeling, anomaly detection, and automation of large-scale ML pipelines</li>
+                            <li>Leading end-to-end development of scalable solutions in PySpark, including model optimization, feature engineering, data preprocessing, and pipeline orchestration for production environments</li>
+                            <li>Building CI/CD workflows and automated ML pipelines, leveraging MLflow for experiment tracking and model registry, and Unity Catalog for model governance and lineage control</li>
+                            <li>Driving research and innovation initiatives such as the Text-to-SQL project, aimed at automating SQL query generation from natural language using LLAMA, Gemini, and GPT-based architectures</li>
+                            <li>Contributing to enterprise projects for clients including Boston Scientific and AEGEA, developing distributed data processing pipelines and cloud-native ML systems in Databricks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SAUTER -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Machine Learning Engineer and Data Scientist</h3>
+                            <p class="experience-company">SAUTER</p>
+                        </div>
+                        <div class="experience-date">Jan 2023 - Jul 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developing, deploying, and maintaining machine learning models and cloud infrastructure in the food retail sector</li>
+                            <li>Collaborated with cross-functional teams on feature engineering, model training, deployment, and productionization of ML solutions, enhancing operational efficiency and reducing food waste</li>
+                            <li>GCP based solutions using orchestration and IaS such as Airflow and Terraform, with track record in building, containerization and deploying scalable applications with Docker, Kubernetes, BentoML, Streamlit, and MLflow</li>
+                            <li>Experience in Elasticsearch for text search, supporting data indexing and retrieval solutions</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- PUC-Rio Research -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Machine Learning Researcher</h3>
+                            <p class="experience-company">Pontifícia Universidade Católica do Rio de Janeiro (Petrobras Project)</p>
+                        </div>
+                        <div class="experience-date">Jan 2023 - Mar 2024</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Project on anomaly detection in petroleum well time series data for Petrobras, leveraging techniques such as Stochastic Outlier Selection (SOS), isolation forest, angle-based outlier detection, and local outlier-factor</li>
+                            <li>Achieved target detection rate of over 80% through ensemble methods</li>
+                            <li>Full-cycle project tasks, including data preprocessing, threshold setting, and algorithm performance evaluation using metrics like accuracy, precision, recall, F1-score, cross-entropy, and Kullback-Leibler divergence</li>
+                            <li>Enabled proactive maintenance, enhanced safety, and optimized resource allocation for well operations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Vert -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Machine Learning Engineer</h3>
+                            <p class="experience-company">Vert</p>
+                        </div>
+                        <div class="experience-date">May 2022 - Apr 2023</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developed and deployed analytics solutions using SQL server, data mining methodologies, and supervised learning techniques (Clustering, Regression, Decision Trees)</li>
+                            <li>Designed and evaluated machine learning models, utilizing deep learning, Bayesian optimization, and NLP techniques</li>
+                            <li>Insurance fraud detection, where automated and statistical learning approaches achieved up to four times higher detection accuracy compared to manual methods</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- MJV -->
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Data Scientist</h3>
+                            <p class="experience-company">MJV Technology & Innovation</p>
+                        </div>
+                        <div class="experience-date">Jan 2021 - May 2022</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Developed a cloud data query pipeline using AWS services, converting the SaS system and SQL models into PySpark for efficient data processing</li>
+                            <li>Worked with a team of Data Engineers and Analysts using agile methodology, implementing scalable data models for query and API optimization</li>
+                            <li>End-to-end product building using regression models to predict and mitigate default risk, reducing debt by over 50% and recovering $1M in losses</li>
+                            <li>Automated data pipeline updates, including data wrangling, cleaning, manipulation, and KPIs in collection and credit recovery reports/dashboards</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            <p class="section-subtitle">Comprehensive expertise across the ML stack</p>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Core ML & AI</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">Data Science</span>
+                        <span class="skill-tag">Predictive Modeling</span>
+                        <span class="skill-tag">Feature Engineering</span>
+                        <span class="skill-tag">Statistical Modeling</span>
+                        <span class="skill-tag">Optimization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>ML Algorithms</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">SVM</span>
+                        <span class="skill-tag">KMeans</span>
+                        <span class="skill-tag">Decision Trees</span>
+                        <span class="skill-tag">Regression</span>
+                        <span class="skill-tag">Clustering</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Programming & Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">PySpark</span>
+                        <span class="skill-tag">Databricks</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Matplotlib</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>NLP & LLMs</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">LLAMA</span>
+                        <span class="skill-tag">Gemini</span>
+                        <span class="skill-tag">GPT</span>
+                        <span class="skill-tag">RAG</span>
+                        <span class="skill-tag">GraphRAG</span>
+                        <span class="skill-tag">Text-to-SQL</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Cloud & Infrastructure</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">GCP</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Azure</span>
+                        <span class="skill-tag">Cloud Computing</span>
+                        <span class="skill-tag">Infrastructure</span>
+                        <span class="skill-tag">Cloud Deployment</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>MLOps & DevOps</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">CI/CD</span>
+                        <span class="skill-tag">GitHub Actions</span>
+                        <span class="skill-tag">Terraform</span>
+                        <span class="skill-tag">Airflow</span>
+                        <span class="skill-tag">MLflow</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Engineering</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Data Processing</span>
+                        <span class="skill-tag">Data Pipelines</span>
+                        <span class="skill-tag">Data Warehousing</span>
+                        <span class="skill-tag">ETL</span>
+                        <span class="skill-tag">Elasticsearch</span>
+                        <span class="skill-tag">Data Visualization</span>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Development Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Unix Systems</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">BentoML</span>
+                        <span class="skill-tag">Unity Catalog</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section" id="education" style="background: var(--dark);">
+        <div class="container">
+            <h2 class="section-title">EDUCATION</h2>
+            <p class="section-subtitle">Solid academic foundation in mathematics and AI</p>
+            
+            <div class="education-timeline">
+                <div class="education-item">
+                    <h3 class="education-degree">Doctor of Philosophy (Ph.D.) in Data Science</h3>
+                    <p class="education-school">Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)</p>
+                    <p class="education-date">Mar 2023 - Dec 2026 (Expected)</p>
+                    <p class="education-details">
+                        Focus on scalable generative AI architectures and anomaly detection. Research on advanced 
+                        machine learning approaches for complex data systems.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="education-degree">Master's Degree in Applied Mathematics</h3>
+                    <p class="education-school">Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)</p>
+                    <p class="education-date">Jan 2021 - Dec 2022</p>
+                    <p class="education-details">
+                        <strong>Thesis:</strong> Evaluating the use of Random Forest Regressor to Reservoir Simulation in Multi-region Reservoirs.
+                        <br><br>
+                        <strong>Research Focus:</strong> Developed machine learning approaches, particularly a Random Forest model, 
+                        as a cost-effective alternative for oil and gas reservoir simulation, addressing computational complexity 
+                        in reservoir characterization.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="education-degree">Bachelor's Degree in Mathematics</h3>
+                    <p class="education-school">Pontifícia Universidade Católica do Rio de Janeiro (PUC-Rio)</p>
+                    <p class="education-date">Jan 2018 - Dec 2020</p>
+                    <p class="education-details">
+                        Full scholarship recipient through Desafio PUC-Rio Olympiad (Gold Medal). Strong foundation 
+                        in mathematical theory and computational methods.
+                    </p>
+                </div>
+
+                <div class="education-item">
+                    <h3 class="education-degree">Telecommunications Engineering</h3>
+                    <p class="education-school">Instituto Militar de Engenharia (IME)</p>
+                    <p class="education-date">Jan 2015 - Nov 2017</p>
+                    <p class="education-details">
+                        Rigorous engineering program with focus on signal processing and communications systems.
+                    </p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem; text-align: center;">
+                <div style="display: inline-block; background: rgba(0, 255, 157, 0.1); border: 1px solid rgba(0, 255, 157, 0.3); padding: 2rem; max-width: 600px;">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Languages</h3>
+                    <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">English</div>
+                            <div style="color: var(--text-dim);">Advanced</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem;">Portuguese</div>
+                            <div style="color: var(--text-dim);">Native</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -385,25 +920,25 @@
             <div class="highlights-grid">
                 <a href="mailto:icaetanodiniz@gmail.com" class="highlight-card" style="text-decoration: none; color: inherit;">
                     <div class="highlight-icon">✉</div>
-                    <div style="text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem;">Email</div>
-                    <div style="font-size: 1.1rem;">icaetanodiniz@gmail.com</div>
+                    <div style="text-transform: uppercase; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.5rem; letter-spacing: 2px;">Email</div>
+                    <div style="font-size: 1.1rem; word-break: break-all;">icaetanodiniz@gmail.com</div>
                 </a>
 
                 <a href="https://www.linkedin.com/in/igor-caetano-diniz/" target="_blank" class="highlight-card" style="text-decoration: none; color: inherit;">
                     <div class="highlight-icon">💼</div>
-                    <div style="text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem;">LinkedIn</div>
+                    <div style="text-transform: uppercase; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.5rem; letter-spacing: 2px;">LinkedIn</div>
                     <div style="font-size: 1.1rem;">igor-caetano-diniz</div>
                 </a>
 
                 <a href="https://github.com/igorconsulting" target="_blank" class="highlight-card" style="text-decoration: none; color: inherit;">
                     <div class="highlight-icon">⚡</div>
-                    <div style="text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem;">GitHub</div>
+                    <div style="text-transform: uppercase; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.5rem; letter-spacing: 2px;">GitHub</div>
                     <div style="font-size: 1.1rem;">igorconsulting</div>
                 </a>
 
                 <a href="tel:+5538988636216" class="highlight-card" style="text-decoration: none; color: inherit;">
                     <div class="highlight-icon">📱</div>
-                    <div style="text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.5rem;">Phone</div>
+                    <div style="text-transform: uppercase; font-size: 0.9rem; color: var(--text-dim); margin-bottom: 0.5rem; letter-spacing: 2px;">Phone</div>
                     <div style="font-size: 1.1rem;">+55 38 988636216</div>
                 </a>
             </div>
@@ -424,7 +959,7 @@
         </div>
     </footer>
 
-    <!-- Simple smooth scroll -->
+    <!-- Smooth scroll script -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
