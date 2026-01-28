@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Igor Caetano Diniz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Highlight.js for code syntax highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        :root {
+            --primary: #00ff9d;
+            --secondary: #00d4ff;
+            --dark: #0a0e1a;
+            --darker: #050810;
+            --text: #e0e6ed;
+            --text-dim: #8892a6;
+            --accent: #ff006e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(5, 8, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            padding: 1rem 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Blog Header */
+        .blog-header {
+            padding: 10rem 0 4rem;
+            text-align: center;
+        }
+
+        .blog-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .blog-subtitle {
+            color: var(--text-dim);
+            font-size: 1.3rem;
+            font-weight: 300;
+        }
+
+        /* Articles Grid */
+        .articles-section {
+            padding: 4rem 0;
+        }
+
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .article-card {
+            background: var(--dark);
+            border: 1px solid rgba(0, 255, 157, 0.1);
+            padding: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 50px rgba(0, 255, 157, 0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1), rgba(0, 212, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content {
+            padding: 2rem;
+        }
+
+        .article-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .article-date {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        .article-tag {
+            padding: 0.3rem 0.8rem;
+            background: rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            color: var(--primary);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-read-more {
+            color: var(--secondary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .article-card:hover .article-read-more {
+            gap: 1rem;
+        }
+
+        .article-read-more::after {
+            content: '→';
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            border-top: 1px solid rgba(0, 255, 157, 0.1);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--text-dim);
+            margin-top: 6rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-link {
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .articles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-dim);
+        }
+
+        .no-articles {
+            text-align: center;
+            padding: 4rem 0;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">ICD</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <div class="blog-header">
+        <div class="container">
+            <h1 class="blog-title">BLOG</h1>
+            <p class="blog-subtitle">Insights on Machine Learning, Data Science & AI</p>
+        </div>
+    </div>
+
+    <!-- Articles Section -->
+    <section class="articles-section">
+        <div class="container">
+            <div class="articles-grid" id="articlesGrid">
+                <div class="loading">Loading articles...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://github.com/igorconsulting" target="_blank" class="footer-link">GitHub</a>
+                <a href="https://www.linkedin.com/in/igor-caetano-diniz/" target="_blank" class="footer-link">LinkedIn</a>
+                <a href="mailto:icaetanodiniz@gmail.com" class="footer-link">Email</a>
+            </div>
+            <p>© 2025 Igor Caetano Diniz. Machine Learning Engineer & Data Scientist.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Articles configuration - ADD YOUR ARTICLES HERE
+        const articles = [
+            {
+                id: 'rag-vs-finetuning',
+                title: 'RAG vs Fine-tuning: When to Use Each Approach',
+                date: 'January 25, 2025',
+                tag: 'LLMs',
+                excerpt: 'A deep dive into choosing between Retrieval-Augmented Generation and fine-tuning for your LLM applications, with real-world examples and decision frameworks.',
+                image: null, // Optional: path to image like 'blog/images/rag-vs-finetuning.jpg'
+                markdownFile: 'blog/articles/rag-vs-finetuning.md'
+            },
+            {
+                id: 'mlops-real-world',
+                title: 'MLOps in Practice: Lessons from Real Projects',
+                date: 'January 20, 2025',
+                tag: 'MLOps',
+                excerpt: 'Practical insights from deploying ML models in production at Intel, SAUTER, and other companies. What works, what doesn\'t, and why.',
+                image: null,
+                markdownFile: 'blog/articles/mlops-real-world.md'
+            },
+            {
+                id: 'anomaly-detection-timeseries',
+                title: 'Anomaly Detection in Time Series: A Practical Guide',
+                date: 'January 15, 2025',
+                tag: 'ML',
+                excerpt: 'How we achieved 80%+ detection rate in petroleum well monitoring using ensemble methods. Techniques, challenges, and solutions.',
+                image: null,
+                markdownFile: 'blog/articles/anomaly-detection-timeseries.md'
+            }
+        ];
+
+        // Load articles dynamically
+        function loadArticles() {
+            const grid = document.getElementById('articlesGrid');
+            
+            if (articles.length === 0) {
+                grid.innerHTML = '<div class="no-articles">No articles yet. Check back soon!</div>';
+                return;
+            }
+
+            grid.innerHTML = articles.map(article => `
+                <a href="article.html?id=${article.id}" class="article-card">
+                    <div class="article-image">
+                        ${article.image ? 
+                            `<img src="${article.image}" alt="${article.title}">` : 
+                            '📊'
+                        }
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">${article.date}</span>
+                            <span class="article-tag">${article.tag}</span>
+                        </div>
+                        <h2 class="article-title">${article.title}</h2>
+                        <p class="article-excerpt">${article.excerpt}</p>
+                        <span class="article-read-more">Read More</span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', loadArticles);
+    </script>
+</body>
+</html>
