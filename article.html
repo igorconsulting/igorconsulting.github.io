@@ -382,105 +382,10 @@
         </div>
     </footer>
 
+    <script src="blog/config/articles-config.js"></script>
+    <script src="js/article-renderer.js"></script>
     <script>
-        // Articles database (same as blog.html)
-        const articles = {
-            'rag-vs-finetuning': {
-                title: 'RAG vs Fine-tuning: When to Use Each Approach',
-                date: 'January 25, 2025',
-                tag: 'LLMs',
-                markdownFile: 'blog/articles/rag-vs-finetuning.md'
-            },
-            'mlops-real-world': {
-                title: 'MLOps in Practice: Lessons from Real Projects',
-                date: 'January 20, 2025',
-                tag: 'MLOps',
-                markdownFile: 'blog/articles/mlops-real-world.md'
-            },
-            'anomaly-detection-timeseries': {
-                title: 'Anomaly Detection in Time Series: A Practical Guide',
-                date: 'January 15, 2025',
-                tag: 'ML',
-                markdownFile: 'blog/articles/anomaly-detection-timeseries.md'
-            }
-        };
-
-        // Configure marked.js
-        marked.setOptions({
-            highlight: function(code, lang) {
-                if (lang && hljs.getLanguage(lang)) {
-                    return hljs.highlight(code, { language: lang }).value;
-                }
-                return hljs.highlightAuto(code).value;
-            },
-            breaks: true,
-            gfm: true
-        });
-
-        // Get article ID from URL
-        function getArticleId() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('id');
-        }
-
-        // Load and render article
-        async function loadArticle() {
-            const articleId = getArticleId();
-            const wrapper = document.getElementById('articleWrapper');
-
-            if (!articleId || !articles[articleId]) {
-                wrapper.innerHTML = '<div class="error">Article not found. <a href="blog.html">Return to blog</a></div>';
-                return;
-            }
-
-            const article = articles[articleId];
-
-            try {
-                // Fetch the markdown file
-                const response = await fetch(article.markdownFile);
-                
-                if (!response.ok) {
-                    throw new Error('Failed to load article');
-                }
-
-                const markdown = await response.text();
-                const htmlContent = marked.parse(markdown);
-
-                // Render article
-                wrapper.innerHTML = `
-                    <article class="article-header">
-                        <div class="article-meta">
-                            <span class="article-date">${article.date}</span>
-                            <span class="article-tag">${article.tag}</span>
-                        </div>
-                        <h1 class="article-title">${article.title}</h1>
-                    </article>
-                    <div class="article-content">
-                        ${htmlContent}
-                    </div>
-                `;
-
-                // Update page title
-                document.title = `${article.title} - Igor Caetano Diniz`;
-
-            } catch (error) {
-                console.error('Error loading article:', error);
-                wrapper.innerHTML = `
-                    <div class="error">
-                        <p>Failed to load article. This could be because:</p>
-                        <ul style="text-align: left; max-width: 500px; margin: 2rem auto;">
-                            <li>The markdown file doesn't exist yet</li>
-                            <li>The file path is incorrect</li>
-                            <li>There's a network error</li>
-                        </ul>
-                        <p><a href="blog.html">Return to blog</a></p>
-                    </div>
-                `;
-            }
-        }
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', loadArticle);
+        document.addEventListener('DOMContentLoaded', initArticle);
     </script>
 </body>
 </html>

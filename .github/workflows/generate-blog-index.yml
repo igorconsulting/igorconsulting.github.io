@@ -1,0 +1,34 @@
+name: Generate blog index
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "blog/articles/**"
+      - "scripts/generate_articles_config.py"
+
+permissions:
+  contents: write
+
+jobs:
+  build-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Generate articles-config.js
+        run: python scripts/generate_articles_config.py
+
+      - name: Commit changes if any
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add blog/config/articles-config.js
+          git diff --cached --quiet || git commit -m "chore(blog): auto-generate articles index"
+          git push
