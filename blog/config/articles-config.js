@@ -41,44 +41,34 @@ const ARTICLES_CONFIG = [
     "order": 3
   },
   {
-    "id": "domain-driven-design__04-entity-objects",
-    "title": "04. Entity Objects",
+    "id": "domain-driven-design__04-value-objects",
+    "title": "04. Value Objects",
     "date": "",
     "tag": "domain-driven-design",
-    "excerpt": "",
-    "markdownFile": "blog/articles/domain-driven-design/04-entity-objects.md",
+    "excerpt": "The Simplest pattern in tactical domain designer. They are used to **measure** and **objects** things in the domain.",
+    "markdownFile": "blog/articles/domain-driven-design/04-value-objects.md",
     "image": null,
     "order": 4
   },
   {
-    "id": "domain-driven-design__05-aggregates",
-    "title": "05. Aggregates",
+    "id": "domain-driven-design__05-entity-objects",
+    "title": "05. Entity Objects",
     "date": "",
     "tag": "domain-driven-design",
     "excerpt": "",
-    "markdownFile": "blog/articles/domain-driven-design/05-aggregates.md",
+    "markdownFile": "blog/articles/domain-driven-design/05-entity-objects.md",
     "image": null,
     "order": 5
   },
   {
-    "id": "domain-driven-design__06-value-objects",
-    "title": "06. Value Objects",
-    "date": "",
-    "tag": "domain-driven-design",
-    "excerpt": "The Simplest pattern in tactical domain designer. They are used to **measure** and **objects** things in the domain.",
-    "markdownFile": "blog/articles/domain-driven-design/06-value-objects.md",
-    "image": null,
-    "order": 6
-  },
-  {
-    "id": "domain-driven-design__07-entity-objects",
-    "title": "07-entity-objects",
+    "id": "domain-driven-design__06-aggregates",
+    "title": "06. Aggregates",
     "date": "",
     "tag": "domain-driven-design",
     "excerpt": "",
-    "markdownFile": "blog/articles/domain-driven-design/07-entity-objects.md",
+    "markdownFile": "blog/articles/domain-driven-design/06-aggregates.md",
     "image": null,
-    "order": 7
+    "order": 6
   },
   {
     "id": "rag__example-article-rag",
