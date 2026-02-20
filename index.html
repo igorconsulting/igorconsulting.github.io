@@ -13,13 +13,13 @@
     <!-- Inline Styles -->
     <style>
         :root {
-            --primary: #00ff9d;
-            --secondary: #00d4ff;
-            --dark: #0a0e1a;
-            --darker: #050810;
-            --text: #e0e6ed;
-            --text-dim: #8892a6;
-            --accent: #ff006e;
+            --primary: #00FF00;        /* Matrix green */
+            --secondary: #33FF33;      /* Lighter matrix green */
+            --dark: #000000;           /* Pure black */
+            --darker: #000000;         /* Pure black */
+            --text: #FFFFFF;           /* Pure white */
+            --text-dim: #CCCCCC;       /* Light gray, close to white */
+            --accent: #00FF00;         /* Matrix green */
         }
 
         * {
@@ -62,7 +62,7 @@
             right: 0;
             background: rgba(5, 8, 16, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
             padding: 1rem 0;
             z-index: 100;
         }
@@ -132,7 +132,7 @@
 
         .hero-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 1.5rem;
@@ -225,7 +225,7 @@
 
         .highlight-card {
             background: var(--dark);
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.1);
             padding: 2.5rem;
             transition: all 0.4s ease;
             text-align: center;
@@ -234,7 +234,7 @@
         .highlight-card:hover {
             border-color: var(--primary);
             transform: translateY(-8px);
-            box-shadow: 0 15px 50px rgba(0, 255, 157, 0.1);
+            box-shadow: 0 15px 50px rgba(0, 255, 0, 0.1);
         }
 
         .highlight-icon {
@@ -262,7 +262,7 @@
 
         .experience-card {
             background: var(--dark);
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.1);
             padding: 2.5rem;
             transition: all 0.4s ease;
             position: relative;
@@ -282,7 +282,7 @@
         .experience-card:hover {
             transform: translateX(10px);
             border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 255, 0, 0.1);
         }
 
         .experience-card:hover::before {
@@ -315,8 +315,8 @@
             color: var(--text-dim);
             font-size: 0.9rem;
             padding: 0.5rem 1rem;
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.2);
             white-space: nowrap;
         }
 
@@ -353,7 +353,7 @@
 
         .skill-category {
             background: var(--dark);
-            border: 1px solid rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.1);
             padding: 2rem;
             transition: all 0.3s ease;
         }
@@ -361,7 +361,7 @@
         .skill-category:hover {
             border-color: var(--secondary);
             transform: translateY(-5px);
-            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 255, 0, 0.1);
         }
 
         .skill-category h3 {
@@ -379,8 +379,8 @@
 
         .skill-tag {
             padding: 0.5rem 1rem;
-            background: rgba(0, 212, 255, 0.1);
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.2);
             color: var(--text);
             font-size: 0.85rem;
             transition: all 0.3s ease;
@@ -413,7 +413,7 @@
             margin-bottom: 3rem;
             padding: 2rem;
             background: var(--dark);
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.1);
             transition: all 0.3s ease;
         }
 
@@ -432,7 +432,7 @@
         .education-item:hover {
             transform: translateX(10px);
             border-color: var(--primary);
-            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.1);
+            box-shadow: 0 10px 40px rgba(0, 255, 0, 0.1);
         }
 
         .education-degree {
@@ -462,7 +462,7 @@
         /* Footer */
         footer {
             background: var(--darker);
-            border-top: 1px solid rgba(0, 255, 157, 0.1);
+            border-top: 1px solid rgba(0, 255, 0, 0.1);
             padding: 3rem 0;
             text-align: center;
             color: var(--text-dim);
@@ -595,7 +595,7 @@
                 </div>
             </div>
 
-            <div style="background: var(--dark); border: 1px solid rgba(0, 255, 157, 0.1); padding: 2rem; margin-top: 2rem;">
+            <div style="background: var(--dark); border: 1px solid rgba(0, 255, 0, 0.1); padding: 2rem; margin-top: 2rem;">
                 <p style="color: var(--text-dim); line-height: 1.8; font-size: 1.05rem;">
                     Experience focused on <strong style="color: var(--primary);">predictive modeling</strong>, 
                     <strong style="color: var(--primary);">anomaly detection</strong>, 
@@ -894,7 +894,7 @@
             </div>
 
             <div style="margin-top: 4rem; text-align: center;">
-                <div style="display: inline-block; background: rgba(0, 255, 157, 0.1); border: 1px solid rgba(0, 255, 157, 0.3); padding: 2rem; max-width: 600px;">
+                <div style="display: inline-block; background: rgba(0, 255, 0, 0.1); border: 1px solid rgba(0, 255, 0, 0.3); padding: 2rem; max-width: 600px;">
                     <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.3rem;">Languages</h3>
                     <div style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap;">
                         <div>

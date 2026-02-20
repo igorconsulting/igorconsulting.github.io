@@ -88,7 +88,18 @@ class ArticleRenderer {
         if (typeof marked === 'undefined') {
             throw new Error('Marked.js not loaded');
         }
-        return marked.parse(markdown);
+
+        const html = marked.parse(markdown);
+
+        // Remove first h1 to avoid duplication with article header
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        const firstH1 = tempDiv.querySelector('h1');
+        if (firstH1) {
+            firstH1.remove();
+        }
+
+        return tempDiv.innerHTML;
     }
 
     /**
