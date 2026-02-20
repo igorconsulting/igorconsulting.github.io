@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Limpar Cache</title>
+    <style>
+        body {
+            background: #000;
+            color: #0F0;
+            font-family: monospace;
+            padding: 40px;
+            text-align: center;
+        }
+        .box {
+            border: 2px solid #0F0;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+        button {
+            background: #000;
+            color: #0F0;
+            border: 2px solid #0F0;
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            font-family: monospace;
+            margin: 10px;
+        }
+        button:hover {
+            background: #0F0;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>TESTE DE CACHE</h1>
+        <p>Se voce ve esta pagina com fundo PRETO e texto VERDE, as cores novas estao funcionando!</p>
+        <p>Agora pressione:</p>
+        <h2>Mac: Cmd + Shift + R</h2>
+        <h2>Windows: Ctrl + Shift + R</h2>
+        <br>
+        <button onclick="window.location.href='/blog.html?nocache=' + Date.now()">
+            ABRIR BLOG (SEM CACHE)
+        </button>
+    </div>
+</body>
+</html>
