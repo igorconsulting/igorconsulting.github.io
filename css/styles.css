@@ -2,13 +2,13 @@
    VARIABLES & THEME
    =========================== */
 :root {
-    --primary: #00ff9d;
-    --secondary: #00d4ff;
-    --dark: #0a0e1a;
-    --darker: #050810;
-    --text: #e0e6ed;
-    --text-dim: #8892a6;
-    --accent: #ff006e;
+    --primary: #00FF00;        /* Matrix green */
+    --secondary: #33FF33;      /* Lighter matrix green */
+    --dark: #000000;           /* Pure black */
+    --darker: #000000;         /* Pure black */
+    --text: #FFFFFF;           /* Pure white */
+    --text-dim: #CCCCCC;       /* Light gray, close to white */
+    --accent: #00FF00;         /* Matrix green */
 }
 
 /* ===========================

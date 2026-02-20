@@ -14,13 +14,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <style>
         :root {
-            --primary: #00ff9d;
-            --secondary: #00d4ff;
-            --dark: #0a0e1a;
-            --darker: #050810;
-            --text: #e0e6ed;
-            --text-dim: #8892a6;
-            --accent: #ff006e;
+            --primary: #00FF00;        /* Matrix green */
+            --secondary: #33FF33;      /* Lighter matrix green */
+            --dark: #000000;           /* Pure black */
+            --darker: #000000;         /* Pure black */
+            --text: #FFFFFF;           /* Pure white */
+            --text-dim: #CCCCCC;       /* Light gray, close to white */
+            --accent: #00FF00;         /* Matrix green */
         }
 
         * {
@@ -56,7 +56,7 @@
             right: 0;
             background: rgba(5, 8, 16, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
             padding: 1rem 0;
             z-index: 100;
         }
@@ -130,7 +130,7 @@
         .article-header {
             margin-bottom: 3rem;
             padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(0, 255, 157, 0.1);
+            border-bottom: 1px solid rgba(0, 255, 0, 0.1);
         }
 
         .article-meta {
@@ -147,8 +147,8 @@
 
         .article-tag {
             padding: 0.3rem 0.8rem;
-            background: rgba(0, 255, 157, 0.1);
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
             color: var(--primary);
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -187,7 +187,7 @@
 
         .article-content h1 {
             font-size: 2.5rem;
-            border-bottom: 2px solid rgba(0, 255, 157, 0.2);
+            border-bottom: 2px solid rgba(0, 255, 0, 0.2);
             padding-bottom: 0.5rem;
         }
 
@@ -246,12 +246,12 @@
             margin: 2rem 0;
             font-style: italic;
             color: var(--text);
-            background: rgba(0, 255, 157, 0.05);
+            background: rgba(0, 255, 0, 0.05);
             padding: 1rem 1.5rem;
         }
 
         .article-content code {
-            background: rgba(0, 212, 255, 0.1);
+            background: rgba(0, 255, 0, 0.1);
             padding: 0.2rem 0.5rem;
             border-radius: 3px;
             font-family: 'JetBrains Mono', monospace;
@@ -261,7 +261,7 @@
 
         .article-content pre {
             background: var(--dark);
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(0, 255, 0, 0.2);
             padding: 1.5rem;
             border-radius: 5px;
             overflow-x: auto;
@@ -279,7 +279,7 @@
             height: auto;
             border-radius: 5px;
             margin: 2rem 0;
-            border: 1px solid rgba(0, 255, 157, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.1);
         }
 
         .article-content table {
@@ -291,19 +291,19 @@
         .article-content table th,
         .article-content table td {
             padding: 0.75rem;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(0, 255, 0, 0.2);
             text-align: left;
         }
 
         .article-content table th {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(0, 255, 0, 0.1);
             color: var(--primary);
             font-weight: 600;
         }
 
         .article-content hr {
             border: none;
-            border-top: 1px solid rgba(0, 255, 157, 0.2);
+            border-top: 1px solid rgba(0, 255, 0, 0.2);
             margin: 3rem 0;
         }
 
@@ -322,7 +322,7 @@
         /* Footer */
         footer {
             background: var(--darker);
-            border-top: 1px solid rgba(0, 255, 157, 0.1);
+            border-top: 1px solid rgba(0, 255, 0, 0.1);
             padding: 3rem 0;
             text-align: center;
             color: var(--text-dim);
