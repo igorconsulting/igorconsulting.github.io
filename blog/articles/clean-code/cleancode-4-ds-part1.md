@@ -2,8 +2,6 @@
 
 As a Data Scientist or Machine Learning Engineer, you've probably heard colleagues say: *"My code just needs to work"* or *"I'll clean it up later"*. Sound familiar? I've been there too.
 
-But here's the hard truth I learned deploying ML systems at **Intel**, **SAUTER**, and **Petrobras**: messy code doesn't just stay in notebooks—it becomes production systems that fail at 3 AM, confuse your teammates, and cost companies millions.
-
 This is Part I of a series where I'll share practical Clean Code principles specifically for Data Scientists and ML Engineers, based on real production experience.
 
 ## The Real Cost of "Working" Code
@@ -39,19 +37,22 @@ Cost: **3 weeks of debugging**, thousands in lost fraud prevention, and one very
 
 Let's be honest about our challenges:
 
-### 1. We're Scientists, Not Software Engineers
+### 1. We're Scientists, BUT WE NEED to LEARN FROM Software Engineers
 
 Our training focused on:
-- ✅ Statistics and mathematics
-- ✅ Model selection and evaluation
-- ✅ Feature engineering
-- ❌ Software design patterns
-- ❌ Code maintainability
-- ❌ Production systems
+- Statistics and mathematics
+- Model selection and evaluation
+- Feature engineering
+
+But, in production, we need to care about:
+- Software design patterns
+- Code maintainability
+- Production systems
 
 ### 2. The Notebook Culture
 
 Jupyter notebooks are amazing for exploration, but they encourage:
+
 ```python
 # We've all done this
 df_final_v2_real_this_time = df_clean.copy()

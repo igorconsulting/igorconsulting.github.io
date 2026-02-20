@@ -1,4 +1,4 @@
-# 06. Value Objects
+# 04. Value Objects
 The Simplest pattern in tactical domain designer.
 They are used to **measure** and **objects** things in the domain.
 
