@@ -1,13 +1,101 @@
 /**
  * BLOG RENDERER
- * 
- * Responsible for rendering the blog articles grid.
+ *
+ * Responsible for rendering the blog articles grid and index.
  * Single Responsibility: Transform article data into HTML.
  */
 
 class BlogRenderer {
-    constructor(containerId) {
+    constructor(containerId, indexContainerId) {
         this.container = document.getElementById(containerId);
+        this.indexContainer = document.getElementById(indexContainerId);
+        this.currentFilter = null;
+    }
+
+    /**
+     * Render index grouped by topics
+     * @param {Array} articles - Array of article objects
+     */
+    renderIndex(articles) {
+        if (!this.indexContainer) {
+            console.error('Index container not found');
+            return;
+        }
+
+        const grouped = this.groupByTopic(articles);
+
+        this.indexContainer.innerHTML = `
+            <h3 class="index-title">Topics</h3>
+            ${Object.entries(grouped)
+                .map(([topic, topicArticles]) => this.createTopicGroup(topic, topicArticles))
+                .join('')}
+        `;
+
+        this.attachIndexListeners();
+    }
+
+    /**
+     * Group articles by topic (tag)
+     * @param {Array} articles - Array of article objects
+     * @returns {Object} Articles grouped by topic
+     */
+    groupByTopic(articles) {
+        return articles.reduce((acc, article) => {
+            const topic = article.tag;
+            if (!acc[topic]) {
+                acc[topic] = [];
+            }
+            acc[topic].push(article);
+            return acc;
+        }, {});
+    }
+
+    /**
+     * Create HTML for a topic group
+     * @param {string} topic - Topic name
+     * @param {Array} articles - Articles in this topic
+     * @returns {string} HTML string
+     */
+    createTopicGroup(topic, articles) {
+        return `
+            <div class="topic-group" data-topic="${topic}">
+                <div class="topic-header">
+                    <span class="topic-name">${this.formatTopicName(topic)}</span>
+                    <span class="topic-toggle">▶</span>
+                </div>
+                <div class="topic-articles">
+                    ${articles.map(article => `
+                        <a href="article.html?id=${article.id}" class="index-article">
+                            ${article.title}
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Format topic name for display
+     * @param {string} topic - Topic slug
+     * @returns {string} Formatted topic name
+     */
+    formatTopicName(topic) {
+        return topic.split('-').map(word =>
+            word.charAt(0).toUpperCase() + word.slice(1)
+        ).join(' ');
+    }
+
+    /**
+     * Attach event listeners to index
+     */
+    attachIndexListeners() {
+        // Toggle topic expansion
+        document.querySelectorAll('.topic-header').forEach(header => {
+            header.addEventListener('click', (e) => {
+                const group = e.currentTarget.closest('.topic-group');
+                group.classList.toggle('expanded');
+            });
+        });
     }
 
     /**
@@ -122,12 +210,11 @@ class BlogRenderer {
  * Initialize blog page
  */
 function initBlog() {
-    const renderer = new BlogRenderer('articlesGrid');
-    renderer.renderLoading();
-    
+    const renderer = new BlogRenderer('articlesGrid', 'articlesIndex');
+
     try {
         const articles = getAllArticles();
-        renderer.renderArticles(articles);
+        renderer.renderIndex(articles);
     } catch (error) {
         console.error('Error loading articles:', error);
         renderer.renderError('Failed to load articles');

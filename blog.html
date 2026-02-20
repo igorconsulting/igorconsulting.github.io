@@ -40,11 +40,151 @@
     <!-- Articles Section -->
     <section class="articles-section">
         <div class="container">
-            <div class="articles-grid" id="articlesGrid">
-                <!-- Articles will be rendered here by JavaScript -->
+            <div class="blog-layout">
+                <aside class="articles-index" id="articlesIndex">
+                    <!-- Index will be rendered here by JavaScript -->
+                </aside>
+                <div class="articles-main" id="articlesGrid">
+                    <div class="welcome-message">
+                        <h2>Welcome to the Blog</h2>
+                        <p>Select a topic from the index on the left to browse articles.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+
+    <style>
+        .blog-layout {
+            display: flex;
+            gap: 3rem;
+            align-items: flex-start;
+        }
+
+        .articles-main {
+            flex: 1;
+            min-height: 400px;
+        }
+
+        .articles-index {
+            width: 320px;
+            position: sticky;
+            top: 100px;
+            max-height: calc(100vh - 120px);
+            overflow-y: auto;
+            background: rgba(10, 14, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        .index-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .topic-group {
+            margin-bottom: 1rem;
+        }
+
+        .topic-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-header:hover {
+            background: rgba(0, 255, 157, 0.1);
+            border-color: var(--primary);
+        }
+
+        .topic-name {
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: capitalize;
+            font-size: 0.9rem;
+        }
+
+        .topic-toggle {
+            color: var(--text-dim);
+            transition: transform 0.3s ease;
+        }
+
+        .topic-group.expanded .topic-toggle {
+            transform: rotate(90deg);
+        }
+
+        .topic-articles {
+            display: none;
+            padding-left: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .topic-group.expanded .topic-articles {
+            display: block;
+        }
+
+        .index-article {
+            display: block;
+            padding: 0.6rem 0.75rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .index-article:hover {
+            color: var(--secondary);
+            border-left-color: var(--secondary);
+            padding-left: 1rem;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-dim);
+        }
+
+        .welcome-message h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 2rem;
+        }
+
+        .articles-main .article-card {
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 968px) {
+            .blog-layout {
+                flex-direction: column;
+            }
+
+            .articles-index {
+                width: 100%;
+                position: relative;
+                top: 0;
+                max-height: none;
+                order: -1;
+            }
+        }
+    </style>
 
     <!-- Footer -->
     <footer>
