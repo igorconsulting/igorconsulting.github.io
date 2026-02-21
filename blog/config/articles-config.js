@@ -55,7 +55,7 @@ const ARTICLES_CONFIG = [
     "title": "05. Entity Objects",
     "date": "",
     "tag": "domain-driven-design",
-    "excerpt": "",
+    "excerpt": "It's a next level of sofistication.",
     "markdownFile": "blog/articles/domain-driven-design/05-entity-objects.md",
     "image": null,
     "order": 5
